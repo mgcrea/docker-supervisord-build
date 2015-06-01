@@ -29,8 +29,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 EXPOSE 22
 
 # Add authorized SSH key on build
-ONBUILD ADD files/id_rsa.pub /tmp/id_rsa
-ONBUILD RUN mkdir /root/.ssh; cat /tmp/id_rsa > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys; rm -f /tmp/id_rsa
+ONBUILD ADD files/authorized_keys /tmp/authorized_keys
+ONBUILD RUN mkdir /root/.ssh; cat /tmp/authorized_keys > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys; rm -f /tmp/authorized_keys
 # Regenerate host SSH keys on build
 ONBUILD RUN dpkg-reconfigure openssh-server
 
