@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:12.04
 MAINTAINER Olivier Louvignes <olivier@mg-crea.com>
 # @cli docker build -t mgcrea/supervisord-build .
 
