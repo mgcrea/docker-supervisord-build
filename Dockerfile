@@ -28,6 +28,8 @@ RUN mkdir /var/run/sshd
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
 EXPOSE 22
 
+# Add .bash_aliases on build
+ONBUILD ADD files/.bash_aliases /root/.bash_aliases
 # Add authorized SSH key on build
 ONBUILD ADD files/authorized_keys /tmp/authorized_keys
 ONBUILD RUN mkdir /root/.ssh; cat /tmp/authorized_keys > /root/.ssh/authorized_keys && chmod 600 /root/.ssh/authorized_keys; rm -f /tmp/authorized_keys
