@@ -24,3 +24,4 @@ function spcl { tail -fn200 /var/log/supervisor/${1}*; }
 alias chmod644="chmod -R u+rwX,go+rX,go-w"
 alias chmod660="chmod -R ug+rwX,o-rwx"
 alias chmod600="chmod -R u+rwX,go-rwx"
+function chownwww() { sudo chown -R www-data:www-data ${1:-*}; }
